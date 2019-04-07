@@ -4,6 +4,10 @@
   "main": "public/Main.js",
   "homepage": "./",
   "private": true,
+  "engineStrict": true,
+  "engines": {
+    "node": "11.3.0"
+  },
   "dependencies": {
     "@types/jest": "24.0.11",
     "@types/node": "11.13.0",
@@ -12,6 +16,7 @@
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8",
+    "semver": "^6.0.0",
     "typescript": "3.4.2"
   },
   "scripts": {
@@ -21,7 +26,10 @@
     "eject": "react-scripts eject",
     "electron-start": "electron .",
     "preelectron-pack": "npm run build",
-    "electron-pack": "build -c.extraMetadata.main=build/Main.js"
+    "electron-pack": "build -c.extraMetadata.main=build/Main.js",
+    "requirements-check": "node nodeVersionChecker.js",
+    "postinstall": "npm run requirements-check"
+
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -35,5 +43,15 @@
   "devDependencies": {
     "electron": "^4.1.4",
     "electron-builder": "^20.39.0"
+  },
+  "build": {
+    "appId": "nonExistentID",
+    "files": [
+      "build/**/*",
+      "node_modules/**/*"
+    ],
+    "directories": {
+      "buildResources": "assets"
+    }
   }
 }
