@@ -26,7 +26,7 @@
     "eject": "react-scripts eject",
     "electron-start": "electron .",
     "preelectron-pack": "npm run build",
-    "electron-pack": "build -c.extraMetadata.main=build/Main.js",
+    "electron-pack": "build --win --macos -c.extraMetadata.main=build/Main.js",
     "requirements-check": "node nodeVersionChecker.js",
     "postinstall": "npm run requirements-check"
 
