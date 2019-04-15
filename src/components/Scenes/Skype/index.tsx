@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { Screen } from 'types'
 
 type Props = {
   action: Screen
