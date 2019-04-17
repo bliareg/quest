@@ -1,19 +1,28 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 
 type Props = {
-  action: Screen
+  links: {
+    call: string,
+    skip: string
+  }
 }
 
-type State = {}
+class Skype extends React.Component<Props>  {
 
-class SkypeScreen extends React.Component<Props & Screen, State>  {
     render() {
+      const { call, skip } = this.props.links;
+
       return (
         <div>
-          Skype
+          <h4>
+            Skype
+          </h4>
+          <Link to={call}>call</Link>
+          <Link to={skip}>skip</Link>
         </div>
       )
     }
 }
 
-export { SkypeScreen };
+export { Skype };
