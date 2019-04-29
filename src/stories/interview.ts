@@ -2,7 +2,7 @@ import { Story } from 'utils';
 import { Action, ActionArgs } from 'types';
 import { Message } from 'actions';
 
-const getChatStory = (
+const getChatInterviewStory = (
   callbacks: Object,
   getCurrentState: Function,
   onChange: Function
@@ -25,4 +25,4 @@ const buildActions = (...actionArgs: ActionArgs): Action[] => {
   ]
 }
 
-export { getChatStory };
+export { getChatInterviewStory };

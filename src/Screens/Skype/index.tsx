@@ -9,7 +9,9 @@ type Props = {} & RouteProps;
 class Skype extends React.Component<Props> {
   render() {
     return (
-      <SkypeComponent links={{ skip: ROUTES.cartoon1, call: ROUTES.cartoon2 }} />
+      <SkypeComponent links={
+        { skip: ROUTES.skypeIntroductionScreen, call: ROUTES.chat_interview }
+      } />
     );
   }
 }
