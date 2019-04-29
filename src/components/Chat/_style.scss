@@ -1,0 +1,12 @@
+.chat-container {
+  .animation-container {
+    display: flex;
+    flex-direction: row;
+
+    .animation {
+      width: 50%;
+      height: 50%;
+      position: relative;
+    }
+  }
+}
