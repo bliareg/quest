@@ -3,6 +3,7 @@ import './_style.scss';
 import { Animation } from 'components/Animation';
 import { Message } from 'components/Message';
 import shortid from 'shortid';
+import { isString } from 'lodash';
 
 type Props = {
   animationSrc: {
@@ -16,9 +17,15 @@ class Chat extends React.Component<Props, {}> {
 
   _renderMessages() {
     const { messages } = this.props;
-    return  messages.map(
-      value => <Message key={shortid()} value={value} />
-    );
+    return  messages.map((value) => {
+      const key = shortid();
+
+      if (isString(value)) {
+        return <Message value={value} key={key} />
+      }
+
+      return <Message key={key}>{value}</Message>;
+    });
   }
 
   _renderAnimation() {
