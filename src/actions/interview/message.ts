@@ -1,5 +1,6 @@
 import { Action } from 'utils';
 import { ActionArgs } from 'types';
+import { interviewReducers } from 'state';
 
 class Message extends Action {
 
@@ -21,7 +22,7 @@ class Message extends Action {
       }
 
       onChange(
-        { ...state, messages: [...state.messages, value] },
+        interviewReducers.addMessage(state, value),
         () => resolve(true)
       );
     })

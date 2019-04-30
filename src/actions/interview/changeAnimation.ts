@@ -1,5 +1,6 @@
 import { Action } from 'utils';
 import { ActionArgs } from 'types';
+import { interviewReducers } from 'state';
 
 class ChangeAnimation extends Action {
 
@@ -21,7 +22,7 @@ class ChangeAnimation extends Action {
       }
 
       onChange(
-        { ...state, animation: {...state.animation, ...value} },
+        interviewReducers.changeAnimation(state, { ...value }),
         () => resolve(true)
       );
     })
