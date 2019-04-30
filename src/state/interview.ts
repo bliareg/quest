@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Store } from 'utils';
 
 export type InterviewState = {
   animation: {
@@ -9,7 +10,7 @@ export type InterviewState = {
   isRegistrationOpen: boolean
 }
 
-const getInterviewDefaultState = (): InterviewState => {
+const getDefaultState = (): InterviewState => {
   return {
     animation: {
       left: '',
@@ -20,21 +21,36 @@ const getInterviewDefaultState = (): InterviewState => {
   }
 }
 
+const reducers = {
+  changeAnimation: 'changeAnimation',
+  addMessage: 'addMessage',
+  changeRegistrationModal: 'changeRegistrationModal'
+};
+
 const interviewReducers = {
-  changeAnimation: (currentState: InterviewState, payload: Object): InterviewState => {
+  [reducers.changeAnimation]: (currentState: InterviewState, payload: Object): InterviewState => {
     return { ...currentState, animation: { ...currentState.animation, ...payload } }
   },
 
-  addMessage: (currentState: InterviewState, payload: string | React.ReactNode): InterviewState => {
+  [reducers.addMessage]: (currentState: InterviewState, payload: string | React.ReactNode): InterviewState => {
     return { ...currentState, messages: [...currentState.messages, payload] }
   },
 
-  changeRegistrationModal: (currentState: InterviewState, payload: boolean): InterviewState => {
+  [reducers.changeRegistrationModal]: (currentState: InterviewState, payload: boolean): InterviewState => {
     return { ...currentState, isRegistrationOpen: payload }
   },
 }
 
+const getStore = () => (
+  new Store<InterviewState>(getDefaultState, interviewReducers)
+);
+
+const interview = {
+  getDefaultState,
+  getStore,
+  reducers
+};
+
 export {
-  getInterviewDefaultState,
-  interviewReducers
+  interview,
 };

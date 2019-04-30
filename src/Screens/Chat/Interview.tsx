@@ -5,34 +5,39 @@ import { Chat } from 'components/Chat'
 import { Registration } from 'components/Registration'
 import { Story } from 'utils';
 import { getChatInterviewStory } from 'stories'
-import { InterviewState, getInterviewDefaultState, interviewReducers } from 'state';
+import { InterviewState, interview } from 'state';
 
 type Props = {
 } & RouteComponentProps<{}>;
 
 class Interview extends React.Component<Props, InterviewState> {
 
-  story: Story;
+  subId: string | undefined
+  story: Story<InterviewState>;
   constructor(props: Props) {
     super(props);
-    this.state = getInterviewDefaultState();
-    this.story = getChatInterviewStory({}, this.getCurrentState, this.onChange);
+    this.story = getChatInterviewStory({});
+    this.state = this.story.store.state;
   }
 
   componentDidMount() {
+    this.subId = this.story.store.subscribe(() => {
+      console.log(this.story.store);
+      this.setState(this.story.store.state);
+    });
+
     this.story.start();
   }
 
-  getCurrentState = () => {
-    return this.state;
-  }
-
-  onChange = (state: InterviewState, callback: () => void = () => {}) => {
-    this.setState(state, callback);
+  componentWillUnmount() {
+    this.story.store.unsubscribe(this.subId || '');
   }
 
   onChangeRegistrationOpen = (value: boolean) => {
-    this.onChange(interviewReducers.changeRegistrationModal(this.state, value));
+    this.story.store.commiteChange(
+      interview.reducers.changeRegistrationModal,
+      value
+    );
   }
 
   registrationProps = () => {

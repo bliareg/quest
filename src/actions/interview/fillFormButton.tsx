@@ -1,42 +1,33 @@
 import * as React from 'react';
 
 import { Action } from 'utils';
-import { ActionArgs } from 'types';
 import { Message } from './message';
-import { InterviewState, interviewReducers } from 'state';
+import { InterviewState, interview } from 'state';
 
 class FillFormButton extends Action<InterviewState> {
 
-  value: string | React.ReactNode;
-  timeout: number;
-  constructor(timeout: number, ...props: ActionArgs<InterviewState>) {
-    super(...props)
-    this.timeout = timeout;
-  }
+  value: null = null;
+  timeout: number = 0;
 
   async perform() {
-    const { timeout, getCurrentState, onChange, story } = this;
+    const { timeout, story } = this;
 
     await (new Message(
       this._fillFormButton(),
       timeout,
       story,
-      getCurrentState,
-      onChange
     )).perform();
 
     return false;
   }
 
   _openForm = () => {
-    const { onChange, getCurrentState } = this;
-    const state = getCurrentState();
+    const { story } = this;
+    const store = story.store;
 
-    onChange(
-      interviewReducers.changeRegistrationModal(
-        state,
-        true
-      )
+    store.commiteChange(
+      interview.reducers.changeRegistrationModal,
+      true
     );
   }
 

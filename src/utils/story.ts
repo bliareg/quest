@@ -1,4 +1,4 @@
-import { Action } from 'types';
+import { Action, Store } from 'types';
 
 type Callbacks = {
   afterStart?: Function,
@@ -14,17 +14,14 @@ class Story<T> {
   isFinished: boolean = false;
   isInterrupted: boolean = false;
   callbacks: Callbacks = {};
-  getCurrentState: Function = () => {};
-  onChange: Function  = () => {};
+  store: Store<T>
 
   constructor(
     callbacks: Callbacks,
-    getCurrentState: Function,
-    onChange: Function
+    store: Store<T>
   ) {
     this.callbacks = callbacks;
-    this.getCurrentState = getCurrentState;
-    this.onChange = onChange;
+    this.store = store;
   }
 
   start() {

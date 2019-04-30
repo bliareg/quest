@@ -3,15 +3,14 @@ import { Story  } from './story';
 
 class Action<T> implements ActionType<T> {
 
-  story: Story;
-  getCurrentState: () => T;
-  onChange: (state: T, callback?: Function) => void;
+  story: Story<T>;
+  value: any;
+  timeout: number;
 
-  constructor(story: Story, getCurrentState: () => T, onChange: (state: T, callback?: Function) => void) {
+  constructor(value: any, timeout: number, story: Story<T>) {
+    this.value = value;
+    this.timeout = timeout;
     this.story = story;
-    this.getCurrentState = getCurrentState;
-    this.onChange = onChange;
-
   }
 
   async perform() {
