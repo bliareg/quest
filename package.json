@@ -20,6 +20,7 @@
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "2.1.8",
+    "reactjs-popup": "^1.3.2",
     "semver": "^6.0.0",
     "shortid": "^2.2.14",
     "typescript": "3.4.2"
