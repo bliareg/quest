@@ -7,8 +7,8 @@ type Callbacks = {
   afterProceed?: Function
 }
 
-class Story {
-  actions: Action[] = [];
+class Story<T> {
+  actions: Action<T>[] = [];
   isWaiting: boolean = false;
   isStarted: boolean = false;
   isFinished: boolean = false;
@@ -52,8 +52,12 @@ class Story {
     this.isInterrupted = true;
   }
 
-  setActions(actions: Action[]) {
+  setActions(actions: Action<T>[]) {
     this.actions = actions;
+  }
+
+  addActions(actions: Action<T>[]) {
+    this.actions = [...this.actions, ...actions];
   }
 
   async _step() {

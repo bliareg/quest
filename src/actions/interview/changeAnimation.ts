@@ -1,12 +1,12 @@
 import { Action } from 'utils';
 import { ActionArgs } from 'types';
-import { interviewReducers } from 'state';
+import { interviewReducers, InterviewState } from 'state';
 
-class ChangeAnimation extends Action {
+class ChangeAnimation extends Action<InterviewState> {
 
   value: Object;
   timeout: number;
-  constructor(value: Object, timeout: number, ...props: ActionArgs) {
+  constructor(value: Object, timeout: number, ...props: ActionArgs<InterviewState>) {
     super(...props)
     this.value = value;
     this.timeout = timeout;

@@ -10,7 +10,7 @@ type Props = {
     left: string,
     right: string
   },
-  messages: Array<string>
+  messages: Array<string | React.ReactNode>
 }
 
 class Chat extends React.Component<Props, {}> {

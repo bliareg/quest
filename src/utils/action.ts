@@ -1,13 +1,13 @@
 import { Action as ActionType } from 'types';
 import { Story  } from './story';
 
-class Action implements ActionType {
+class Action<T> implements ActionType<T> {
 
   story: Story;
-  getCurrentState: Function;
-  onChange: Function;
+  getCurrentState: () => T;
+  onChange: (state: T, callback?: Function) => void;
 
-  constructor(story: Story, getCurrentState: Function, onChange: Function) {
+  constructor(story: Story, getCurrentState: () => T, onChange: (state: T, callback?: Function) => void) {
     this.story = story;
     this.getCurrentState = getCurrentState;
     this.onChange = onChange;

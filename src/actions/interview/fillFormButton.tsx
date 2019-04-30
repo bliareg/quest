@@ -3,12 +3,13 @@ import * as React from 'react';
 import { Action } from 'utils';
 import { ActionArgs } from 'types';
 import { Message } from './message';
+import { InterviewState, interviewReducers } from 'state';
 
-class FillFormButton extends Action {
+class FillFormButton extends Action<InterviewState> {
 
   value: string | React.ReactNode;
   timeout: number;
-  constructor(timeout: number, ...props: ActionArgs) {
+  constructor(timeout: number, ...props: ActionArgs<InterviewState>) {
     super(...props)
     this.timeout = timeout;
   }
@@ -27,9 +28,21 @@ class FillFormButton extends Action {
     return false;
   }
 
+  _openForm = () => {
+    const { onChange, getCurrentState } = this;
+    const state = getCurrentState();
+
+    onChange(
+      interviewReducers.changeRegistrationModal(
+        state,
+        true
+      )
+    );
+  }
+
   _fillFormButton = () => {
     return (
-      <button>
+      <button onClick={this._openForm}>
         Заполнить анкету
       </button>
     )

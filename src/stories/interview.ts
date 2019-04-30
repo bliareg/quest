@@ -2,14 +2,15 @@ import { Story } from 'utils';
 import { Action, ActionArgs } from 'types';
 import { Animation } from 'components/Animation';
 import { interviewActions } from 'actions';
+import { InterviewState } from 'state';
 const { ChangeAnimation, Message, FillFormButton } = interviewActions;
 
 const getChatInterviewStory = (
   callbacks: Object,
-  getCurrentState: Function,
-  onChange: Function
-): Story => {
-  const story = new Story(callbacks, getCurrentState, onChange);
+  getCurrentState: () => InterviewState,
+  onChange: (state: InterviewState, callback?: Function) => void,
+): Story<InterviewState> => {
+  const story = new Story<InterviewState>(callbacks, getCurrentState, onChange);
   const actions = buildActions(story, getCurrentState, onChange);
 
   story.setActions(actions);
@@ -17,7 +18,7 @@ const getChatInterviewStory = (
   return story;
 }
 
-const buildActions = (...actionArgs: ActionArgs): Action[] => {
+const buildActions = (...actionArgs: ActionArgs<InterviewState>): Action<InterviewState>[] => {
   return [
     new ChangeAnimation({ left: Animation.types.boss }, 0, ...actionArgs),
     new Message('Здравствуйте!', 800, ...actionArgs),

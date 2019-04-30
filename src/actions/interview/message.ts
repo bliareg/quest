@@ -1,12 +1,12 @@
 import { Action } from 'utils';
 import { ActionArgs } from 'types';
-import { interviewReducers } from 'state';
+import { interviewReducers, InterviewState } from 'state';
 
-class Message extends Action {
+class Message extends Action<InterviewState> {
 
   value: string | React.ReactNode;
   timeout: number;
-  constructor(value: string | React.ReactNode, timeout: number, ...props: ActionArgs) {
+  constructor(value: string | React.ReactNode, timeout: number, ...props: ActionArgs<InterviewState>) {
     super(...props)
     this.value = value;
     this.timeout = timeout;
