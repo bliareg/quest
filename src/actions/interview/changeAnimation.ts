@@ -1,25 +1,16 @@
 import { Action } from 'utils';
 import { interview, InterviewState } from 'state';
 
-class ChangeAnimation extends Action<InterviewState> {
-
-  value: Object = {};
-  timeout: number = 0;
-
+class ChangeAnimation extends Action<Object, InterviewState> {
   perform() {
-    const { value, timeout, story } = this;
-    const store = story.store;
-
+    const {  timeout, story, value } = this;
     return this._timeoutPromise(timeout, (resolve) => {
 
       if (story.isInterrupted) {
         return resolve(false);
       }
 
-      store.commiteChange(
-        interview.reducers.changeAnimation,
-        value
-      );
+      interview.events.changeAnimation(value);
 
       resolve(true);
     });

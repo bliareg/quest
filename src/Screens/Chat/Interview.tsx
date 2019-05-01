@@ -6,10 +6,12 @@ import { Registration } from 'components/Registration'
 import { Story } from 'utils';
 import { getChatInterviewStory } from 'stories'
 import { InterviewState, interview } from 'state';
+import { subscribe } from 'hocs';
 
 type Props = {
-} & RouteComponentProps<{}>;
+} & RouteComponentProps<{}> & InterviewState;
 
+@subscribe(interview.store)
 class Interview extends React.Component<Props, InterviewState> {
 
   subId: string | undefined
@@ -17,31 +19,18 @@ class Interview extends React.Component<Props, InterviewState> {
   constructor(props: Props) {
     super(props);
     this.story = getChatInterviewStory({});
-    this.state = this.story.store.state;
   }
 
   componentDidMount() {
-    this.subId = this.story.store.subscribe(() => {
-      console.log(this.story.store);
-      this.setState(this.story.store.state);
-    });
-
     this.story.start();
   }
 
-  componentWillUnmount() {
-    this.story.store.unsubscribe(this.subId || '');
-  }
-
   onChangeRegistrationOpen = (value: boolean) => {
-    this.story.store.commiteChange(
-      interview.reducers.changeRegistrationModal,
-      value
-    );
+    interview.events.changeRegistrationModal(false);
   }
 
   registrationProps = () => {
-    const { isRegistrationOpen } = this.state;
+    const { isRegistrationOpen } = this.props;
 
     const onSubmit = () => {
       this.onChangeRegistrationOpen(false);
@@ -52,7 +41,7 @@ class Interview extends React.Component<Props, InterviewState> {
   }
 
   render() {
-    const { messages, animation } = this.state;
+    const { messages, animation } = this.props;
     const { left, right } = animation;
 
     return(

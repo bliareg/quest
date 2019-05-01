@@ -4,13 +4,13 @@ import { Action } from 'utils';
 import { Message } from './message';
 import { InterviewState, interview } from 'state';
 
-class FillFormButton extends Action<InterviewState> {
-
-  value: null = null;
-  timeout: number = 0;
-
+class FillFormButton extends Action<boolean, InterviewState> {
   async perform() {
     const { timeout, story } = this;
+
+    if (story.isInterrupted) {
+      return false;
+    }
 
     await (new Message(
       this._fillFormButton(),
@@ -22,13 +22,7 @@ class FillFormButton extends Action<InterviewState> {
   }
 
   _openForm = () => {
-    const { story } = this;
-    const store = story.store;
-
-    store.commiteChange(
-      interview.reducers.changeRegistrationModal,
-      true
-    );
+    interview.events.changeRegistrationModal(true)
   }
 
   _fillFormButton = () => {

@@ -1,4 +1,5 @@
-import { Action, Store } from 'types';
+import { Store } from 'effector';
+import { Action } from 'types';
 
 type Callbacks = {
   afterStart?: Function,

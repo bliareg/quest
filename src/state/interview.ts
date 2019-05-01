@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { Store } from 'utils';
+import { createDomain, createStore } from 'effector'
+import { INTERVIEW, INTERVIEW_EVENTS, RESET } from 'constants/index';
 
 export type InterviewState = {
   animation: {
@@ -21,36 +22,40 @@ const getDefaultState = (): InterviewState => {
   }
 }
 
-const reducers = {
-  changeAnimation: 'changeAnimation',
-  addMessage: 'addMessage',
-  changeRegistrationModal: 'changeRegistrationModal'
+
+const { changeAnimation, addMessage, changeRegistrationModal } = INTERVIEW_EVENTS;
+
+const interviewDomain = createDomain(INTERVIEW);
+
+const events = {
+  changeAnimation: interviewDomain.event<Object>(changeAnimation),
+  addMessage: interviewDomain.event<string | React.ReactNode>(addMessage),
+  changeRegistrationModal: interviewDomain.event<boolean>(changeRegistrationModal),
+  reset: interviewDomain.event<any>(RESET)
 };
 
-const interviewReducers = {
-  [reducers.changeAnimation]: (currentState: InterviewState, payload: Object): InterviewState => {
-    return { ...currentState, animation: { ...currentState.animation, ...payload } }
-  },
+const store = interviewDomain.store(getDefaultState())
 
-  [reducers.addMessage]: (currentState: InterviewState, payload: string | React.ReactNode): InterviewState => {
-    return { ...currentState, messages: [...currentState.messages, payload] }
-  },
-
-  [reducers.changeRegistrationModal]: (currentState: InterviewState, payload: boolean): InterviewState => {
-    return { ...currentState, isRegistrationOpen: payload }
-  },
-}
-
-const getStore = () => (
-  new Store<InterviewState>(getDefaultState, interviewReducers)
+store.on(
+  events.changeAnimation,
+  (state, change) => ({...state, animation: { ...state.animation, ...change }})
 );
 
-const interview = {
-  getDefaultState,
-  getStore,
-  reducers
-};
+store.on(
+  events.addMessage,
+  (state, message) => ({...state, messages: [...state.messages, message]})
+);
 
-export {
-  interview,
-};
+store.on(
+  events.changeRegistrationModal,
+  (state, value) => ({...state, isRegistrationOpen: value})
+);
+
+store.reset(events.reset);
+
+const interview = {
+  store,
+  events
+}
+
+export { interview }

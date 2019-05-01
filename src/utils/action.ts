@@ -1,10 +1,10 @@
 import { Action as ActionType } from 'types';
 import { Story  } from './story';
 
-class Action<T> implements ActionType<T> {
+class Action<VAL, T> implements ActionType<T> {
 
   story: Story<T>;
-  value: any;
+  value: VAL;
   timeout: number;
 
   constructor(value: any, timeout: number, story: Story<T>) {
