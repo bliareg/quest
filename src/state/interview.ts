@@ -8,7 +8,8 @@ export type InterviewState = {
     right: string
   },
   messages: Array<React.ReactNode | string>,
-  isRegistrationOpen: boolean
+  isRegistrationOpen: boolean,
+  decisions: string[]
 }
 
 const getDefaultState = (): InterviewState => {
@@ -18,12 +19,13 @@ const getDefaultState = (): InterviewState => {
       right: ''
     },
     messages: [],
-    isRegistrationOpen: false
+    isRegistrationOpen: false,
+    decisions: []
   }
 }
 
 
-const { changeAnimation, addMessage, changeRegistrationModal } = INTERVIEW_EVENTS;
+const { changeAnimation, addMessage, changeRegistrationModal, addDecision } = INTERVIEW_EVENTS;
 
 const interviewDomain = createDomain(INTERVIEW);
 
@@ -31,6 +33,7 @@ const events = {
   changeAnimation: interviewDomain.event<Object>(changeAnimation),
   addMessage: interviewDomain.event<string | React.ReactNode>(addMessage),
   changeRegistrationModal: interviewDomain.event<boolean>(changeRegistrationModal),
+  addDecision: interviewDomain.event<any>(addDecision),
   reset: interviewDomain.event<any>(RESET)
 };
 
@@ -38,7 +41,7 @@ const store = interviewDomain.store(getDefaultState())
 
 store.on(
   events.changeAnimation,
-  (state, change) => ({...state, animation: { ...state.animation, ...change }})
+  (state, change) => ({...state, animation: {...state.animation, ...change }})
 );
 
 store.on(
@@ -49,6 +52,11 @@ store.on(
 store.on(
   events.changeRegistrationModal,
   (state, value) => ({...state, isRegistrationOpen: value})
+);
+
+store.on(
+  events.addDecision,
+  (state, value) => ({...state, decisions: [...state.decisions, value]})
 );
 
 store.reset(events.reset);

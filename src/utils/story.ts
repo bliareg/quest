@@ -8,7 +8,7 @@ type Callbacks = {
   afterProceed?: Function
 }
 
-class Story<T> {
+class Story<T = { decisions: string[] }> {
   actions: Action<T>[] = [];
   isWaiting: boolean = false;
   isStarted: boolean = false;
@@ -32,8 +32,13 @@ class Story<T> {
   }
 
   proceed() {
+    if (!this.isWaiting) {
+      return;
+    }
+
     this.isWaiting = false;
     this._callback('afterProceed')
+    this._step();
   }
 
   wait() {
@@ -78,6 +83,11 @@ class Story<T> {
   _callback(name: "afterStart" | "afterWait" | "afterFinish" | "afterProceed") {
     const callback = this.callbacks[name];
     callback && callback();
+  }
+
+  isDecision(key: string): boolean {
+    const state: any = this.store.getState();
+    return !!state.decisions.includes(key);
   }
 }
 
