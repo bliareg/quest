@@ -1,3 +1,4 @@
 export * from './message';
 export * from './changeAnimation';
 export * from './fillFormButton';
+export * from './branching';
