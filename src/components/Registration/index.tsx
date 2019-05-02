@@ -61,7 +61,6 @@ class Registration extends React.Component<Props, State> {
   }
 
   onChange = (e: React.FormEvent<HTMLInputElement>) => {
-    console.log(e.currentTarget.name, e.currentTarget.value);
     this.setState({
       [e.currentTarget.name]: e.currentTarget.value
     });

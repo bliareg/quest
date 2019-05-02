@@ -17,7 +17,6 @@ class Branching extends Action<Value, InterviewState> {
       story.addActions(
         value(state)
       );
-      console.log(story);
       story.proceed();
       resolve(true);
     })
