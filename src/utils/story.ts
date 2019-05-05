@@ -1,4 +1,4 @@
-import { Store } from 'effector';
+import { Store, Event } from 'effector';
 import { Action } from 'types';
 
 type Callbacks = {

@@ -14,7 +14,6 @@ type Props = {
 @subscribe(interview.store)
 class Interview extends React.Component<Props, InterviewState> {
 
-  subId: string | undefined
   story: Story<InterviewState>;
   constructor(props: Props) {
     super(props);
