@@ -3,8 +3,8 @@ import { Action } from 'types';
 import { Animation } from 'components/Animation';
 import { interviewActions } from 'actions';
 import { InterviewState, interview } from 'state';
-import { INTERVIEW_DECISIONS } from 'constants/index';
-const { ChangeAnimation, Message, FillFormButton, Branching } = interviewActions;
+import { INTERVIEW_DECISIONS, ROUTES } from 'constants/index';
+const { ChangeAnimation, Message, FillFormButton, Branching, RemoveLastMessage, Navigate } = interviewActions;
 
 const getChatInterviewStory = (
   callbacks: Object,
@@ -26,6 +26,7 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
     new Message('Итак, вы хотите устроиться на работу в нашу компанию?', 1500, story),
     new Message('Для начала я предлагаю вам заполнить нашу анкету…', 1500, story),
     new FillFormButton(null, 1500, story),
+    new RemoveLastMessage(null, 0, story),
 
     new Branching((state: InterviewState) => {
       if (story.isDecision(INTERVIEW_DECISIONS.canWork)) {
@@ -64,7 +65,9 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
       }
 
       return [];
-    }, 0, story)
+    }, 0, story),
+
+    new Navigate(ROUTES.skypeIntroductionScreen, 500, story)
   ]
 }
 
