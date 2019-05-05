@@ -25,6 +25,10 @@ class Interview extends React.Component<Props, InterviewState> {
     this.story.start();
   }
 
+  componentWillUnmount() {
+    this.story.finish();
+  }
+
   onChangeRegistrationOpen = (value: boolean) => {
     interview.events.changeRegistrationModal(false);
   }

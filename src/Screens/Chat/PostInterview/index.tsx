@@ -24,6 +24,10 @@ class PostInterview extends React.Component<Props, PostInterviewState> {
     this.story.start();
   }
 
+  componentWillUnmount() {
+    this.story.finish();
+  }
+
   render() {
     const { messages, animation } = this.props;
     const { left, right } = animation;

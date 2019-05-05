@@ -70,6 +70,10 @@ class Story<T = { decisions: string[] }> {
       return this.finish();
     }
 
+    if (this.isFinished) {
+      return;
+    }
+
     const isWaiting = !await step.perform()
     this.actions = this.actions.filter(value => value.actionId !== step.actionId);
 

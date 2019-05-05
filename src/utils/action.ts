@@ -29,6 +29,11 @@ class Action<VAL, T> implements ActionType<T> {
 
     return new Promise<boolean>((res, rej) => {
       setTimeout(() => {
+
+        if (this.story.isFinished) {
+          return;
+        }
+
         callback(res);
       }, timeout)
     });
