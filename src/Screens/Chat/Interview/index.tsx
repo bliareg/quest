@@ -21,6 +21,7 @@ class Interview extends React.Component<Props, InterviewState> {
   }
 
   componentDidMount() {
+    interview.events.reset(0);
     this.story.start();
   }
 

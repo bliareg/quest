@@ -1,21 +1,32 @@
 import * as React from 'react';
-import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
+import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { ROUTES } from 'constants/index';
 import { Skype as SkypeComponent } from 'components/Skype/index';
 
 type RouteProps = RouteComponentProps<{}>;
 type Props = {} & RouteProps;
 
-class Skype extends React.Component<Props> {
+class SkypeIntroduction extends React.Component<Props> {
   render() {
     return (
       <SkypeComponent links={
-        { skip: ROUTES.skypeIntroductionScreen, call: ROUTES.chat_interview }
+        { skip: '', call: ROUTES.chatInterview }
       } />
     );
   }
 }
 
-const SkypeScreen = withRouter(Skype);
+class SkypeFinal extends React.Component<Props> {
+  render() {
+    return (
+      <SkypeComponent links={
+        { skip: '', call: ROUTES.chatPostInterview }
+      } />
+    );
+  }
+}
 
-export { SkypeScreen };
+const SkypeIntroductionScreen = withRouter(SkypeIntroduction);
+const SkypeFinalScreen = withRouter(SkypeFinal);
+
+export { SkypeIntroductionScreen, SkypeFinalScreen };

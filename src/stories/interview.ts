@@ -42,6 +42,8 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
           new ChangeAnimation({ right: '' }, 100, story),
           new Message('Итак, надеюсь на плодотворное сотрудничество (за 1 миллион то!).', 800, story),
           new Message('До свидания.', 1500, story),
+
+          new Navigate(ROUTES.skypeFinalScreen, 500, story)
         ]
       }
 
@@ -61,13 +63,13 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
           new ChangeAnimation({ right: '' }, 100, story),
           new Message('Ну что ж, спасибо за потраченное время. Мы продолжим поиски необходимых нам сотрудников (за 1 миллион то!)', 1500, story),
           new Message('До свидания', 1500, story),
+
+          new Navigate(ROUTES.skypeIntroductionScreen, 500, story)
         ]
       }
 
       return [];
     }, 0, story),
-
-    new Navigate(ROUTES.skypeIntroductionScreen, 500, story)
   ]
 }
 

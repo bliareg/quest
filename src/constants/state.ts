@@ -26,9 +26,3 @@ export const INTERVIEW_DECISIONS = {
 
 // POST INTERVIEW STORY
 export const POST_INTERVIEW = 'INTERVIEW';
-
-export const POST_INTERVIEW_EVENTS = {
-}
-
-export const POST_INTERVIEW_DECISIONS = {
-}

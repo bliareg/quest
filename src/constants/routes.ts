@@ -1,6 +1,8 @@
 const ROUTES = {
   skypeIntroductionScreen: '/',
-  chat_interview: '/chat/interview',
+  skypeFinalScreen: '/skype/final',
+  chatInterview: '/chat/interview',
+  chatPostInterview: '/chat/postInterview',
 };
 
 export { ROUTES }
