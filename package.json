@@ -48,6 +48,7 @@
     "not op_mini all"
   ],
   "devDependencies": {
+    "@types/history": "^4.7.2",
     "@types/lodash": "^4.14.123",
     "@types/shortid": "^0.0.29",
     "electron": "^4.1.4",
