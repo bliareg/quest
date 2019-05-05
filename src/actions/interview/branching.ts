@@ -15,11 +15,17 @@ class Branching extends Action<Value, InterviewState> {
       const state = interview.store.getState();
 
       story.addActions(
-        value(state)
+        value(state),
       );
+
       story.proceed();
       resolve(true);
     })
+  }
+
+  _index() {
+    const { story, actionId } = this;
+    return story.actions.findIndex((value) => value.actionId === actionId)
   }
 
 }

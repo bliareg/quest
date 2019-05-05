@@ -3,6 +3,8 @@ import * as React from 'react';
 import { Action } from 'utils';
 import { Message } from './message';
 import { InterviewState, interview } from 'state';
+import { INTERVIEW_DECISIONS } from 'constants/index';
+const { cannotWork, canWork } = INTERVIEW_DECISIONS;
 
 class FillFormButton extends Action<boolean, InterviewState> {
   async perform() {
@@ -22,6 +24,10 @@ class FillFormButton extends Action<boolean, InterviewState> {
   }
 
   _openForm = () => {
+    if (this.story.isAnyDecistion(cannotWork, canWork)) {
+      return;
+    }
+
     interview.events.changeRegistrationModal(true)
   }
 
