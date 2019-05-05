@@ -11,8 +11,8 @@ type Callbacks = {
 class Story<T = { decisions: string[] }> {
   actions: Action<T>[] = [];
   isWaiting: boolean = false;
-  isStarted: boolean = false;
   isFinished: boolean = false;
+  isStarted: boolean = false;
   isInterrupted: boolean = false;
   callbacks: Callbacks = {};
   store: Store<T>
@@ -60,7 +60,7 @@ class Story<T = { decisions: string[] }> {
   }
 
   addActions(actions: Action<T>[]) {
-    this.actions = [...this.actions, ...actions];
+    this.actions = [...actions, ...this.actions]
   }
 
   async _step() {
@@ -71,7 +71,7 @@ class Story<T = { decisions: string[] }> {
     }
 
     const isWaiting = !await step.perform()
-    this.actions.shift();
+    this.actions = this.actions.filter(value => value.actionId !== step.actionId);
 
     if (isWaiting) {
       this.wait();
@@ -88,6 +88,13 @@ class Story<T = { decisions: string[] }> {
   isDecision(key: string): boolean {
     const state: any = this.store.getState();
     return !!state.decisions.includes(key);
+  }
+
+  isAnyDecistion(...keys: string[]): boolean {
+    const state: any = this.store.getState();
+    return !!keys.filter(
+      value => state.decisions.includes(value)
+    ).length
   }
 }
 

@@ -1,3 +1,4 @@
+import shortid from 'shortid'
 import { Action as ActionType } from 'types';
 import { Story  } from './story';
 
@@ -6,11 +7,13 @@ class Action<VAL, T> implements ActionType<T> {
   story: Story<T>;
   value: VAL;
   timeout: number;
+  actionId: string;
 
   constructor(value: any, timeout: number, story: Story<T>) {
     this.value = value;
     this.timeout = timeout;
     this.story = story;
+    this.actionId = shortid();
   }
 
   async perform() {
