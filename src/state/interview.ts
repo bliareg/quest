@@ -1,13 +1,13 @@
-import * as React from 'react';
-import { createDomain, createStore } from 'effector'
+import { createDomain } from 'effector'
 import { INTERVIEW, INTERVIEW_EVENTS, RESET } from 'constants/index';
+import { Message } from 'types';
 
 export type InterviewState = {
   animation: {
     left: string,
     right: string
   },
-  messages: Array<React.ReactNode | string>,
+  messages: Array<Message>,
   isRegistrationOpen: boolean,
   decisions: string[]
 }
@@ -25,13 +25,22 @@ const getDefaultState = (): InterviewState => {
 }
 
 
-const { changeAnimation, addMessage, changeRegistrationModal, addDecision } = INTERVIEW_EVENTS;
+const {
+  changeAnimation,
+  addMessage,
+  changeRegistrationModal,
+  addDecision,
+  removeMessage,
+  removeMessageByIndex
+} = INTERVIEW_EVENTS;
 
 const interviewDomain = createDomain(INTERVIEW);
 
 const events = {
   changeAnimation: interviewDomain.event<Object>(changeAnimation),
-  addMessage: interviewDomain.event<string | React.ReactNode>(addMessage),
+  addMessage: interviewDomain.event<Message>(addMessage),
+  removeMessage: interviewDomain.event<string>(removeMessage),
+  removeMessageByIndex: interviewDomain.event<number>(removeMessageByIndex),
   changeRegistrationModal: interviewDomain.event<boolean>(changeRegistrationModal),
   addDecision: interviewDomain.event<any>(addDecision),
   reset: interviewDomain.event<any>(RESET)
@@ -57,6 +66,26 @@ store.on(
 store.on(
   events.addDecision,
   (state, value) => ({...state, decisions: [...state.decisions, value]})
+);
+
+store.on(
+  events.removeMessage,
+  (state, id) => ({...state, messages: state.messages.filter((value) => (
+    value.id === id
+  )) })
+);
+
+store.on(
+  events.removeMessageByIndex,
+  (state, index) => ({
+    ...state,
+    messages: (() => {
+      const messages = [...state.messages];
+      messages.splice(index, 1);
+
+      return messages;
+    })()
+  })
 );
 
 store.reset(events.reset);

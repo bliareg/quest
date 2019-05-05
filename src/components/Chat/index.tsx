@@ -2,29 +2,29 @@ import * as React from 'react';
 import './_style.scss';
 import { Animation } from 'components/Animation';
 import { Message } from 'components/Message';
-import shortid from 'shortid';
 import { isString } from 'lodash';
+import { Message as MessageType } from 'types';
 
 type Props = {
   animationSrc: {
     left: string,
     right: string
   },
-  messages: Array<string | React.ReactNode>
+
+  messages: Array<MessageType>
 }
 
 class Chat extends React.Component<Props, {}> {
 
   _renderMessages() {
     const { messages } = this.props;
-    return  messages.map((value) => {
-      const key = shortid();
+    return  messages.map((message) => {
 
-      if (isString(value)) {
-        return <Message value={value} key={key} />
+      if (isString(message.value)) {
+        return <Message value={message.value} key={message.id} />
       }
 
-      return <Message key={key}>{value}</Message>;
+      return <Message key={message.id}>{message.value}</Message>;
     });
   }
 

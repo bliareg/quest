@@ -5,7 +5,9 @@ export const INTERVIEW_EVENTS = {
   addMessage: 'addMessage',
   changeAnimation: 'changeAnimation',
   changeRegistrationModal: 'changeRegistrationModal',
-  addDecision: 'addDecision'
+  addDecision: 'addDecision',
+  removeMessage: 'removeMessage',
+  removeMessageByIndex: 'removeMessageByIndex',
 }
 
 export const INTERVIEW_DECISIONS = {
