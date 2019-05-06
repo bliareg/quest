@@ -5,7 +5,8 @@ function createWindow() {
   // Create the browser window.
   var win = new BrowserWindow({
     width: 800,
-    height: 600
+    height: 600,
+    fullscreen: true
   })
 
   // win.loadURL('http://localhost:3000/');
