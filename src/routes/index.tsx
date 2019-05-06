@@ -4,7 +4,8 @@ import {
   SkypeIntroductionScreen,
   SkypeFinalScreen,
   InterviewScreen,
-  PostInterviewScreen
+  PostInterviewScreen,
+  LoginScreen
 } from 'Screens/index';
 
 import { ROUTES } from 'constants/index';
@@ -19,6 +20,7 @@ class Routes extends React.Component {
         <Route path={ROUTES.skypeFinalScreen} exact component={SkypeFinalScreen} />
         <Route path={ROUTES.chatInterview} exact component={InterviewScreen} />
         <Route path={ROUTES.chatPostInterview} exact component={PostInterviewScreen} />
+        <Route path={ROUTES.login} exact component={LoginScreen} />
       </Router>
     );
   }

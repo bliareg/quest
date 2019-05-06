@@ -27,7 +27,7 @@ const buildActions = (story: Story<PostInterviewState>): Action<PostInterviewSta
     new Message('Михаил Брилиантович, который сейчас отдыхает на острове Святой Елены, держит ключ у себя в кабинете.', 1500, story),
     new Message('Правда я не знаю, в каком месте он лежит, но Михаил Брилиантович (скажу вам по секрету – из-за своего склероза) всегда оставляет для себя подсказки.', 1500, story),
     new Message('Надеюсь, вы его найдете, потому что (скажу вам по секрету) Михаил Брилиантович приедет с острова Святой Елены еще не скоро', 1500, story),
-    new Navigate(ROUTES.skypeIntroductionScreen, 500, story)
+    new Navigate(ROUTES.login, 500, story)
   ]
 }
 
