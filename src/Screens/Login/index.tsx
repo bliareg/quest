@@ -16,7 +16,7 @@ type State = {
 
 const AUTH_CREDENTIAL: { [key: string]: string } = {
   firstName: 'name',
-  lasName: 'lastname',
+  lastName: 'lastname',
   accessCode: 'code'
 }
 
@@ -50,8 +50,8 @@ class Login extends React.Component<Props, State> {
     const state: { [key: string]: string } = this.state;
 
     return FIELDS.every(field => (
-      AUTH_CREDENTIAL[field] === state[field]
-    ));
+      this._compare(AUTH_CREDENTIAL[field], (state[field])
+    )));
   }
 
   error(action: 'show' | 'hide') {
@@ -62,6 +62,13 @@ class Login extends React.Component<Props, State> {
     if (action === 'hide') {
       this.setState({ error: '' });
     }
+  }
+
+  _compare = (val1: string, val2: string): boolean => {
+    const val1ToCompare = `${val1}`.toLowerCase().replace(/\s/g, '');
+    const val2ToCompare = `${val2}`.toLowerCase().replace(/\s/g, '');
+    console.log(val1ToCompare, val2ToCompare);
+    return val1ToCompare === val2ToCompare;
   }
 
   render() {
