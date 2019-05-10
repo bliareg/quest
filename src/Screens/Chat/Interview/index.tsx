@@ -31,7 +31,7 @@ class Interview extends React.Component<Props, InterviewState> {
 
   onChangeRegistrationOpen = (value: boolean) => {
     interview.events.changeRegistrationModal(false);
-  }
+  };
 
   registrationProps = () => {
     const { isRegistrationOpen } = this.props;
@@ -39,10 +39,10 @@ class Interview extends React.Component<Props, InterviewState> {
     const onSubmit = () => {
       this.onChangeRegistrationOpen(false);
       this.story.proceed();
-    }
+    };
 
     return { onSubmit, isOpen: isRegistrationOpen, onChange: this.onChangeRegistrationOpen };
-  }
+  };
 
   render() {
     const { messages, animation } = this.props;
@@ -60,5 +60,5 @@ class Interview extends React.Component<Props, InterviewState> {
   }
 }
 
-const InterviewScreen = withRouter(Interview)
+const InterviewScreen = withRouter(Interview);
 export { InterviewScreen };

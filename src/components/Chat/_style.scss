@@ -1,12 +1,26 @@
 .chat-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+
   .animation-container {
     display: flex;
-    flex-direction: row;
+    align-items: center;
+    margin-bottom: 10px;
+
 
     .animation {
+      flex: 1 1 50%;
       width: 50%;
-      height: 50%;
-      position: relative;
     }
+  }
+
+  .chat {
+    padding: 5px 15px;
+    width: 100%;
+    min-height: 100px;
+    background-color: var(--chat-bg);
   }
 }

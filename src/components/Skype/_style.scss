@@ -1,0 +1,89 @@
+.enter-layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background: url('../../assets/img/wallpaper.jpg') 50% 50%;
+  background-size: cover;
+
+  .skype-call {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 220px;
+    height: 278px;
+    background: var(--skype-call-bg);
+    border-radius: 5px;
+    border-top: 1px solid rgba(#fff, .2);
+    box-shadow: -2px 24px 20px -12px rgba(var(--black),.5) ;
+  }
+
+  .skype-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100px;
+    height: 100px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    background-color: var(--skype-avatar-bg);
+    overflow: hidden;
+
+    .avatar {
+      width: 40%;
+      fill: var(--white);
+    }
+  }
+
+  .skype-name {
+    margin-bottom: 15px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--white);
+  }
+
+  .skype-call-label {
+    margin-bottom: 25px;
+    color: var(--skype-label-bg);
+    font-size: 12px;
+    letter-spacing: 1px;
+  }
+
+  .skype-controll-holder {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 15px;
+  }
+
+  .skype-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+
+    svg {
+      width: 45%;
+      fill: var(--white);
+    }
+  }
+
+  .skip {
+
+    svg {
+      transform: rotate(135deg);
+    }
+  }
+
+  .success {
+    background-color: var(--success);
+  }
+
+  .error {
+    background-color: var(--error);
+  }
+}

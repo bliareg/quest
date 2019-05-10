@@ -1,0 +1,25 @@
+.enter-layout {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  min-height: 100vh;
+
+  .skype-btn {
+    display: block;
+    width: 60px;
+    height: 60px;
+
+    >img {
+      width: 100%;
+    }
+  }
+
+  .skip-btn {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translate(-50%, 0);
+  }
+}
