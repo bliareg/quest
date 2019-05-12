@@ -6,7 +6,7 @@
   "private": true,
   "engineStrict": true,
   "engines": {
-    "node": "11.3.0"
+    "node": "10.15.3"
   },
   "dependencies": {
     "@types/jest": "24.0.11",
@@ -34,7 +34,7 @@
     "eject": "react-scripts eject",
     "electron-start": "electron .",
     "preelectron-pack": "npm run build",
-    "electron-pack": "build --win --macos -c.extraMetadata.main=build/Main.js",
+    "electron-pack": "build --win --macos --linux -c.extraMetadata.main=build/Main.js",
     "requirements-check": "node nodeVersionChecker.js",
     "postinstall": "npm run requirements-check"
   },
