@@ -6,7 +6,7 @@ function createWindow() {
   var win = new BrowserWindow({
     width: 800,
     height: 600,
-    fullscreen: true
+    kiosk: true
   })
 
   // win.loadURL('http://localhost:3000/');
