@@ -64,7 +64,7 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
           new Message('Ну что ж, спасибо за потраченное время. Мы продолжим поиски необходимых нам сотрудников (за 1 миллион то!)', 1500, story),
           new Message('До свидания', 1500, story),
 
-          new Navigate(ROUTES.finalFail1, 5000, story)
+          new Navigate(ROUTES.skypeFinalScreen, 5000, story)
         ]
       }
 

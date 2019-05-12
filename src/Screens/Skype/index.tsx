@@ -10,8 +10,10 @@ class SkypeIntroduction extends React.Component<Props> {
   render() {
     return (
       <SkypeComponent links={
-        { skip: ROUTES.finalFail1, call: ROUTES.chatInterview }
-      } />
+        { skip: ROUTES.login, call: ROUTES.chatInterview }
+      }
+        name="Karl Markovich"
+      />
     );
   }
 }
@@ -20,8 +22,10 @@ class SkypeFinal extends React.Component<Props> {
   render() {
     return (
       <SkypeComponent links={
-        { skip: ROUTES.finalFail1, call: ROUTES.chatPostInterview }
-      } />
+        { skip: ROUTES.login, call: ROUTES.chatPostInterview }
+      }
+        name="Karl Markovich"
+      />
     );
   }
 }
