@@ -4,13 +4,13 @@ type Props = {
   children?: React.ReactNode,
   value?: string
 };
-const Message = ({ children, value }: Props) => {
+const Message = React.forwardRef<HTMLDivElement, Props>((props, ref) => {
   return (
-    <div className='message'>
-      {children && children}
-      {value && <div className="text">{value}</div>}
+    <div className='message' ref={ref}>
+      {props.children && props.children}
+      {props.value && <div className="text">{props.value}</div>}
     </div>
   )
-}
+});
 
 export { Message };

@@ -16,15 +16,39 @@ type Props = {
 
 class Chat extends React.Component<Props, {}> {
 
+  lastMessageRef = React.createRef<HTMLDivElement>();
+
+  componentDidUpdate(nextProps: Props) {
+    const isNewMessage = nextProps.messages.length !== this.props.messages.length;
+
+    if (!isNewMessage || !this.lastMessageRef.current) {
+      return;
+    }
+
+    this.lastMessageRef.current.scrollIntoView();
+  }
+
   _renderMessages() {
     const { messages } = this.props;
-    return  messages.map((message) => {
+    return  messages.map((message, index) => {
+
+      const isLast = index === messages.length - 1;
 
       if (isString(message.value)) {
-        return <Message value={message.value} key={message.id} />
+        return <Message
+            value={message.value}
+            key={message.id}
+            {...isLast && ({ ref: this.lastMessageRef })}
+          />
       }
 
-      return <Message key={message.id}>{message.value}</Message>;
+      return (
+        <Message
+          key={message.id}
+          {...isLast && ({ ref: this.lastMessageRef })}
+        >
+          {message.value}
+        </Message>);
     });
   }
 
