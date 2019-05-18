@@ -1,4 +1,4 @@
-import { Story } from 'utils';
+import { Story, t as translate } from 'utils';
 import { Action } from 'types';
 import { Animation } from 'components/Animation';
 import { postInterviewActions } from 'actions';
@@ -18,17 +18,21 @@ const getChatPostInterviewStory = (
   return story;
 }
 
+const t = (key: number | string) => {
+  return translate(`stories.postInterview.plain.${key}`)
+}
+
 const buildActions = (story: Story<PostInterviewState>): Action<PostInterviewState>[] => {
   return [
     new ChangeAnimation({ left: Animation.types.secretary }, 0, story),
-    new Message('Ой! Извините!', 800, story),
-    new Message('Произошла накладка.', 1500, story),
-    new Message('Я потеряла ключи от дверей.', 1500, story),
-    new Message('Мне очень жаль.', 1500, story),
-    new Message('Но пожалуйста, не беспокойтесь.', 1500, story),
-    new Message('Михаил Брилиантович, который сейчас отдыхает на острове Святой Елены, держит ключ у себя в кабинете.', 1500, story),
-    new Message('Правда я не знаю, в каком месте он лежит, но Михаил Брилиантович (скажу вам по секрету – из-за своего склероза) всегда оставляет для себя подсказки.', 5000, story),
-    new Message('Надеюсь, вы его найдете, потому что (скажу вам по секрету) Михаил Брилиантович приедет с острова Святой Елены еще не скоро', 5000, story),
+    new Message(t(1), 800, story),
+    new Message(t(2), 1500, story),
+    new Message(t(3), 1500, story),
+    new Message(t(4), 1500, story),
+    new Message(t(5), 1500, story),
+    new Message(t(6), 1500, story),
+    new Message(t(7), 5000, story),
+    new Message(t(8), 5000, story),
     new Navigate(ROUTES.login, 7000, story)
   ]
 }
