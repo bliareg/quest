@@ -1,7 +1,10 @@
-import React, { Component } from 'react';
+import * as React from 'react';
 import { Routes } from 'routes/index';
+import { bindGlobalAppShortcuts } from 'utils';
 
-class App extends Component {
+bindGlobalAppShortcuts();
+
+class App extends React.Component {
   render() {
     return (
       <div className="App">
