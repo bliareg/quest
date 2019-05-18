@@ -1,6 +1,7 @@
 import * as React from 'react';
 import Popup from 'reactjs-popup';
 import { isEmpty } from 'lodash';
+import { translate } from 'utils';
 import { INTERVIEW_DECISIONS } from 'constants/index';
 import { interview } from 'state';
 
@@ -17,13 +18,17 @@ type State = {
   [key: string]: any
 }
 
+const t = (key: string) => {
+  return translate(`components.Registration.${key}`)
+}
+
 class Registration extends React.Component<Props, State> {
 
   state = {
     gender: '',
     skill: '',
     errors: { gender: '', skill: '' },
-  }
+  };
 
   onSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -41,11 +46,11 @@ class Registration extends React.Component<Props, State> {
     let errors = {};
 
     if (!skill) {
-       errors = { ...errors,  skill: 'Cannot be blank' } 
+       errors = { ...errors,  skill: t('validation.empty')};
     }
 
     if (!gender) {
-       errors = { ...errors,  gender: 'Cannot be blank' } 
+       errors = { ...errors,  gender: t('validation.empty')};
     }
 
     if (!isEmpty(errors)) {
@@ -72,8 +77,8 @@ class Registration extends React.Component<Props, State> {
     return (
       <Popup open={isOpen} onClose={this.onClose} position={'top center'}>
         <div className="registration-main">
-          <form onSubmit={this.onSubmit} className="reigstration">
-            <p className="form-control-legend">Ваш пол:</p>
+          <form onSubmit={this.onSubmit} className="registration">
+            <p className="form-control-legend">{t('gender.legend')}</p>
             <div className="form-control">
               <input
                 id="gender-male"
@@ -83,7 +88,7 @@ class Registration extends React.Component<Props, State> {
                 checked={gender === 'male'}
                 onChange={this.onChange}
               />
-              <label htmlFor="gender-male">Мужской</label>
+              <label htmlFor="gender-male">{t('gender.male')}</label>
 
               <input
                 id="gender-female"
@@ -93,11 +98,11 @@ class Registration extends React.Component<Props, State> {
                 checked={gender === 'female'}
                 onChange={this.onChange}
               />
-                <label htmlFor="gender-female">Женский</label>
+                <label htmlFor="gender-female">{t('gender.female')}</label>
               </div>
               <div className="error">{errors.gender}</div>
 
-            <p className="form-control-legend">Профессиональные навыки:</p>
+            <p className="form-control-legend">{t('skill.legend')}</p>
             <div className="form-control">
               <input
                 id="skill-0"
@@ -107,7 +112,7 @@ class Registration extends React.Component<Props, State> {
                 checked={skill === INTERVIEW_DECISIONS.canWork}
                 onChange={this.onChange}
               />
-              <label htmlFor="skill-0">Могу работать</label>
+              <label htmlFor="skill-0">{t('skill.canWork')}</label>
 
               <input
                 id="skill-1"
@@ -117,10 +122,10 @@ class Registration extends React.Component<Props, State> {
                 checked={skill === INTERVIEW_DECISIONS.cannotWork}
                 onChange={this.onChange}
               />
-              <label htmlFor="skill-1">Могу не работать</label>
+              <label htmlFor="skill-1">{t('skill.cannotWork')}</label>
             </div>
             <div className="error">{errors.skill}</div>
-            <button>Далее</button>
+            <button>{t('submit')}</button>
           </form>
         </div>
       </Popup>

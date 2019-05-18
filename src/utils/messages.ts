@@ -14,4 +14,5 @@ function t(key: string): string {
   return message;
 }
 
-export { t, changeLocale }
+
+export { t, changeLocale, t as translate }

@@ -41,5 +41,47 @@
         "8": "Надеюсь, вы его найдете, потому что (скажу вам по секрету) Михаил Брилиантович приедет с острова Святой Елены еще не скоро"
       }
     }
+  },
+  "components": {
+    "LoginForm": {
+      "firstName": "Имя пользователя",
+      "lastName": "Фамилия пользователя",
+      "accessCode": "Код доступа",
+      "submit": "Login"
+    },
+    "Registration": {
+      "validation": {
+        "empty": "Cannot be blank"
+      },
+      "gender": {
+        "legend": "Ваш пол:",
+        "male": "Мужской",
+        "female": "Женский"
+      },
+      "skill": {
+        "legend": "Профессиональные навыки:",
+        "canWork": "Могу работать",
+        "cannotWork": "Могу не работать"
+      },
+      "submit": "Далее"
+    },
+    "Skype": {
+      "callLabel": "Входящий звонок..."
+    }
+  },
+  "Screens": {
+    "Login": {
+      "errors": {
+        "nonAuth": "Вход не авторизирован"
+      }
+    },
+    "Skype": {
+      "SkypeIntroduction": {
+        "name": "Karl Markovich"
+      },
+      "SkypeFinal": {
+        "name": "Karl Markovich"
+      }
+    }
   }
 }

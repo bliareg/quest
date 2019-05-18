@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { translate } from 'utils';
 
 type Props = {
   firstName: string,
@@ -7,6 +8,10 @@ type Props = {
   error: string,
   onChange: (params: { name: string, value: string }) => void,
   onSubmit: Function
+}
+
+const t = (key: string) => {
+  return translate(`components.LoginForm.${key}`);
 }
 
 class LoginForm extends React.Component<Props>  {
@@ -29,7 +34,7 @@ class LoginForm extends React.Component<Props>  {
           {error}
           <form onSubmit={this.onSubmit} className="sign-in">
             <div className="form-control">
-              <label>Имя пользователя</label>
+              <label>{t('firstName')}</label>
               <input
                 type="text"
                 name="firstName"
@@ -40,7 +45,7 @@ class LoginForm extends React.Component<Props>  {
             </div>
 
             <div className="form-control">
-              <label>Фамилия пользователя</label>
+              <label>{t('lastName')}</label>
               <input
                 type="text"
                 name="lastName"
@@ -51,7 +56,7 @@ class LoginForm extends React.Component<Props>  {
             </div>
 
             <div className="form-control">
-              <label>Код доступа</label>
+              <label>{t('accessCode')}</label>
               <input
                 type="text"
                 name="accessCode"
@@ -60,7 +65,7 @@ class LoginForm extends React.Component<Props>  {
               />
               <div className="error"></div>
             </div>
-            <button>Login</button>
+            <button>{t('submit')}</button>
           </form>
         </div>
       )

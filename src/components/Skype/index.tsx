@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { skype } from '../../assets/img/';
+import { t } from 'utils';
 import './_style.scss';
 
 type Props = {
@@ -26,7 +26,7 @@ class Skype extends React.Component<Props>  {
                     </svg>
                 </div>
                 <p className="skype-name">{name}</p>
-                <p className="skype-call-label">Входящий звонок...</p>
+                <p className="skype-call-label">{t('components.Skype.callLabel')}</p>
                 <div className="skype-controll-holder">
                     <Link
                         to={call}

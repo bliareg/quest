@@ -1,4 +1,4 @@
-import { Story, t as translate } from 'utils';
+import { Story, translate } from 'utils';
 import { Action } from 'types';
 import { Animation } from 'components/Animation';
 import { interviewActions } from 'actions';

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 import { ROUTES } from 'constants/index';
-import { history } from 'utils';
+import { history, t } from 'utils';
 import { LoginForm } from 'components/LoginForm/index';
 
 type RouteProps = RouteComponentProps<{}>;
@@ -56,7 +56,7 @@ class Login extends React.Component<Props, State> {
 
   error(action: 'show' | 'hide') {
     if (action === 'show') {
-      this.setState({ error: 'Вход не авторизирован' });
+      this.setState({ error: t('Screens.Login.errors.nonAuth') });
     }
 
     if (action === 'hide') {
