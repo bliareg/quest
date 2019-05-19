@@ -50,7 +50,7 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
           new Message(t('succ.8'), 50, story),
           new Message(t('succ.9'), 1500, story),
 
-          new Navigate(ROUTES.skypeFinalScreen, 5000, story)
+          new Navigate(ROUTES.skypeCallScreen, 5000, story)
         ]
       }
 
@@ -71,7 +71,7 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
           new Message(t('fail.7'), 1500, story),
           new Message(t('fail.8'), 1500, story),
 
-          new Navigate(ROUTES.skypeFinalScreen, 5000, story)
+          new Navigate(ROUTES.skypeCallScreen, 5000, story)
         ]
       }
 

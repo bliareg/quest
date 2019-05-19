@@ -1,5 +1,6 @@
 const ROUTES = {
   skypeIntroductionScreen: '/',
+  skypeCallScreen: '/skype/call',
   skypeFinalScreen: '/skype/final',
   chatInterview: '/chat/interview',
   chatPostInterview: '/chat/postInterview',

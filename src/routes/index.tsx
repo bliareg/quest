@@ -3,6 +3,7 @@ import { Route, Router } from 'react-router-dom'
 import {
   SkypeIntroductionScreen,
   SkypeFinalScreen,
+  SkypeCallScreen,
   InterviewScreen,
   PostInterviewScreen,
   LoginScreen,
@@ -20,6 +21,7 @@ class Routes extends React.Component {
       <Router history={history}>
         <Route path={ROUTES.skypeIntroductionScreen} exact component={SkypeIntroductionScreen} />
         <Route path={ROUTES.skypeFinalScreen} exact component={SkypeFinalScreen} />
+        <Route path={ROUTES.skypeCallScreen} exact component={SkypeCallScreen} />
         <Route path={ROUTES.chatInterview} exact component={InterviewScreen} />
         <Route path={ROUTES.chatPostInterview} exact component={PostInterviewScreen} />
         <Route path={ROUTES.login} exact component={LoginScreen} />

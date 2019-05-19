@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
-import { t } from 'utils';
+import { t, history } from 'utils';
 import { ROUTES } from 'constants/index';
 import { Skype as SkypeComponent } from 'components/Skype/index';
+import { SkypeCall as SkypeCallComponent } from 'components/SkypeCall';
 
 type RouteProps = RouteComponentProps<{}>;
 type Props = {} & RouteProps;
@@ -20,12 +21,32 @@ class SkypeIntroduction extends React.Component<Props> {
 }
 
 class SkypeFinal extends React.Component<Props> {
+
+  componentDidMount() {
+    setTimeout(() => {
+      history.push(ROUTES.chatPostInterview);
+    }, 5000);
+  }
+
   render() {
     return (
       <SkypeComponent links={
-        { skip: ROUTES.login, call: ROUTES.chatPostInterview }
+        { skip: ROUTES.login }
       }
         name={t('Screens.Skype.SkypeIntroduction.name')}
+        outcomingCall
+      />
+    );
+  }
+}
+
+
+class SkypeCall extends React.Component<Props> {
+  render() {
+    return (
+      <SkypeCallComponent
+        name={t('Screens.Skype.SkypeCall.name')}
+        redirectTo={ROUTES.skypeFinalScreen}
       />
     );
   }
@@ -33,5 +54,6 @@ class SkypeFinal extends React.Component<Props> {
 
 const SkypeIntroductionScreen = withRouter(SkypeIntroduction);
 const SkypeFinalScreen = withRouter(SkypeFinal);
+const SkypeCallScreen = withRouter(SkypeCall);
 
-export { SkypeIntroductionScreen, SkypeFinalScreen };
+export { SkypeIntroductionScreen, SkypeFinalScreen, SkypeCallScreen };
