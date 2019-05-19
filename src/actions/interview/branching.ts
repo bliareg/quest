@@ -5,22 +5,27 @@ type Value = (state: InterviewState) => Action<any, InterviewState>[];
 
 class Branching extends Action<Value, InterviewState> {
   perform() {
-    const { value, timeout, story } = this;
+    const {  timeout, story } = this;
     return this._timeoutPromise(timeout, (resolve) => {
 
       if (story.isInterrupted) {
         return resolve(false);
       }
 
-      const state = interview.store.getState();
-
-      story.addActions(
-        value(state),
-      );
-
-      story.proceed();
-      resolve(true);
+      resolve(this.performNow());
     })
+  }
+
+  performNow() {
+    const { value, story } = this;
+    const state = interview.store.getState();
+
+    story.addActions(
+      value(state),
+    );
+
+    story.proceed();
+    return true;
   }
 
   _index() {

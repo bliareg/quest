@@ -16,6 +16,7 @@ class Story<T = { decisions: string[] }> {
   isInterrupted: boolean = false;
   callbacks: Callbacks = {};
   store: Store<T>
+  currentStep: Action<T> | null = null;
 
   constructor(
     callbacks: Callbacks,
@@ -29,6 +30,14 @@ class Story<T = { decisions: string[] }> {
     this.isStarted = true;
     this._step();
     this._callback('afterStart');
+  }
+
+  forceNext() {
+    if (!this.currentStep) {
+      return;
+    }
+
+    this.currentStep.interceptPerform();
   }
 
   proceed() {
@@ -74,6 +83,7 @@ class Story<T = { decisions: string[] }> {
       return;
     }
 
+    this.currentStep = step;
     const isWaiting = !await step.perform()
     this.actions = this.actions.filter(value => value.actionId !== step.actionId);
 

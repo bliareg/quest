@@ -19,9 +19,15 @@ class Message extends Action<string | React.ReactNode, PostInterviewState> {
         return resolve(false);
       }
 
-      postInterview.events.addMessage(this.buildMessage())
-      resolve(true);
+      resolve(
+        this.performNow()
+      );
     })
+  }
+
+  performNow() {
+    postInterview.events.addMessage(this.buildMessage());
+    return true;
   }
 
   buildMessage() {

@@ -8,6 +8,8 @@ class Action<VAL, T> implements ActionType<T> {
   value: VAL;
   timeout: number;
   actionId: string;
+  timeoutId: NodeJS.Timer | null = null;
+  resolve: Function | null = null;
 
   constructor(value: any, timeout: number, story: Story<T>) {
     this.value = value;
@@ -20,6 +22,19 @@ class Action<VAL, T> implements ActionType<T> {
     return true;
   }
 
+  performNow() {
+    return true;
+  }
+
+  interceptPerform() {
+    this.timeoutId && clearTimeout(this.timeoutId);
+
+    this.resolve && this.resolve(
+      this.performNow()
+    );
+  }
+
+
   _timeoutPromise(
     timeout: number,
     callback: (
@@ -28,7 +43,8 @@ class Action<VAL, T> implements ActionType<T> {
   ): Promise<boolean> {
 
     return new Promise<boolean>((res, rej) => {
-      setTimeout(() => {
+      this.resolve = res;
+      this.timeoutId = setTimeout(() => {
 
         if (this.story.isFinished) {
           return;

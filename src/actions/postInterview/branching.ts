@@ -5,22 +5,27 @@ type Value = (state: PostInterviewState) => Action<any, PostInterviewState>[];
 
 class Branching extends Action<Value, PostInterviewState> {
   perform() {
-    const { value, timeout, story } = this;
+    const {  timeout, story } = this;
     return this._timeoutPromise(timeout, (resolve) => {
 
       if (story.isInterrupted) {
         return resolve(false);
       }
 
-      const state = postInterview.store.getState();
-
-      story.addActions(
-        value(state),
-      );
-
-      story.proceed();
-      resolve(true);
+      resolve(this.performNow());
     })
+  }
+
+  performNow() {
+    const { value, story } = this;
+    const state = postInterview.store.getState();
+
+    story.addActions(
+      value(state),
+    );
+
+    story.proceed();
+    return true;
   }
 
   _index() {

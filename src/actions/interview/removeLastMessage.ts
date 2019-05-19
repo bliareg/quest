@@ -5,10 +5,14 @@ class RemoveLastMessage extends Action<any, InterviewState> {
   perform() {
     const { timeout } = this;
     return this._timeoutPromise(timeout, (resolve) => {
-      const messagesCount = this.story.store.getState().messages.length;
-      interview.events.removeMessageByIndex(messagesCount - 1);
-      resolve(true);
+      resolve(this.performNow());
     })
+  }
+
+  performNow() {
+    const messagesCount = this.story.store.getState().messages.length;
+    interview.events.removeMessageByIndex(messagesCount - 1);
+    return true;
   }
 }
 

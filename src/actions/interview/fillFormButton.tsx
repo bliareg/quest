@@ -23,6 +23,10 @@ class FillFormButton extends Action<boolean, InterviewState> {
     return false;
   }
 
+  performNow() {
+    return false;
+  }
+
   _openForm = () => {
     if (this.story.isAnyDecistion(cannotWork, canWork)) {
       return;

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { Chat } from 'components/Chat'
-import { Story } from 'utils';
+import { Story, t } from 'utils';
 import { getChatPostInterviewStory } from 'stories'
 import { PostInterviewState, postInterview } from 'state';
 import { subscribe } from 'hocs';
@@ -28,6 +28,10 @@ class PostInterview extends React.Component<Props, PostInterviewState> {
     this.story.finish();
   }
 
+  onNext = () => {
+    this.story.forceNext();
+  }
+
   render() {
     const { messages, animation } = this.props;
     const { left, right } = animation;
@@ -38,6 +42,7 @@ class PostInterview extends React.Component<Props, PostInterviewState> {
           animationSrc={{ left, right }}
           messages={messages}
         />
+      <button onClick={this.onNext}>{t('Screens.Interview.next')}</button>
       </>
     );
   }

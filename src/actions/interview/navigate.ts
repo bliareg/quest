@@ -3,11 +3,16 @@ import { InterviewState } from 'state';
 
 class Navigate extends Action<string, InterviewState> {
   perform() {
-    const { timeout, value } = this;
+    const { timeout } = this;
     return this._timeoutPromise(timeout, (resolve) => {
-      history.push(value);
-      resolve(true);
+      resolve(this.performNow());
     })
+  }
+
+  performNow() {
+    const { value } = this;
+    history.push(value);
+    return true;
   }
 }
 

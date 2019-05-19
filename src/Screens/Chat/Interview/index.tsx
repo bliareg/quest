@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom';
 import { RouteComponentProps } from 'react-router';
 import { Chat } from 'components/Chat'
 import { Registration } from 'components/Registration'
-import { Story } from 'utils';
+import { Story, t } from 'utils';
 import { getChatInterviewStory } from 'stories'
 import { InterviewState, interview } from 'state';
 import { subscribe } from 'hocs';
@@ -44,6 +44,10 @@ class Interview extends React.Component<Props, InterviewState> {
     return { onSubmit, isOpen: isRegistrationOpen, onChange: this.onChangeRegistrationOpen };
   };
 
+  onNext = () => {
+    this.story.forceNext();
+  }
+
   render() {
     const { messages, animation } = this.props;
     const { left, right } = animation;
@@ -54,6 +58,7 @@ class Interview extends React.Component<Props, InterviewState> {
           animationSrc={{ left, right }}
           messages={messages}
         />
+        <button onClick={this.onNext}>{t('Screens.Interview.next')}</button>
         <Registration {...this.registrationProps()} />
       </>
     );

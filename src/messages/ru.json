@@ -90,6 +90,9 @@
       "SkypeCall": {
         "name": "Karl Markovich"
       }
+    },
+    "Interview": {
+      "next": "Далее"
     }
   }
 }
