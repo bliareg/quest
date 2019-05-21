@@ -51,7 +51,7 @@
     },
     "Registration": {
       "validation": {
-        "empty": "Cannot be blank"
+        "empty": "Поле должно быть заполнено"
       },
       "gender": {
         "legend": "Ваш пол:",
@@ -63,7 +63,8 @@
         "canWork": "Могу работать",
         "cannotWork": "Могу не работать"
       },
-      "submit": "Далее"
+      "submit": "Далее",
+      "title": "Маленькая анкета"
     },
     "Skype": {
       "callInlabel": "Входящий звонок...",
