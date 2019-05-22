@@ -2,7 +2,6 @@ import * as React from 'react';
 import './_style.scss';
 import { Animation } from 'components/Animation';
 import { Message } from 'components/Message';
-import { isString } from 'lodash';
 import { Message as MessageType } from 'types';
 
 type Props = {
@@ -34,21 +33,21 @@ class Chat extends React.Component<Props, {}> {
 
       const isLast = index === messages.length - 1;
 
-      if (isString(message.value)) {
+      if (message.value && message.value.message) {
         return <Message
             value={message.value}
             key={message.id}
             {...isLast && ({ ref: this.lastMessageRef })}
-          />
+        />
       }
 
       return (
-        <Message
-          key={message.id}
-          {...isLast && ({ ref: this.lastMessageRef })}
-        >
-          {message.value}
-        </Message>);
+          <Message
+              key={message.id}
+              {...isLast && ({ ref: this.lastMessageRef })}
+          >
+            {message.value}
+          </Message>)
     });
   }
 

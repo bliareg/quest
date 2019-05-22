@@ -58,7 +58,7 @@ class Interview extends React.Component<Props, InterviewState> {
           animationSrc={{ left, right }}
           messages={messages}
         />
-        <button onClick={this.onNext}>{t('Screens.Interview.next')}</button>
+        {/*<button onClick={this.onNext}>{t('Screens.Interview.next')}</button>*/}
         <Registration {...this.registrationProps()} />
       </>
     );

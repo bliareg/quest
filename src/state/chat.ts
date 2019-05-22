@@ -18,7 +18,7 @@ const getDefaultState = (): ChatState => {
     },
     messages: [],
   }
-}
+};
 
 const {
   changeAnimation,
@@ -66,11 +66,11 @@ const addEvents = (domain: Domain, store: Store<ChatState>) => {
   );
 
   return events;
-}
+};
 
 const chat = {
   getDefaultState,
   addEvents
-}
+};
 
 export { chat }

@@ -9,6 +9,7 @@
   padding: 10px;
   padding-bottom: var(--chat-block-height);
   min-height: calc(100vh - var(--chat-block-height)) !important;
+  overflow: hidden;
 
   .animation-container {
     display: flex;
@@ -32,5 +33,6 @@
     min-height: 100px;
     background-color: var(--chat-bg);
     border-top: 1px solid var(--chat-border);
+    overflow-y: auto;
   }
 }
