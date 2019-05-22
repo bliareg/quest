@@ -46,7 +46,7 @@ class Interview extends React.Component<Props, InterviewState> {
 
   onNext = () => {
     this.story.forceNext();
-  }
+  };
 
   render() {
     const { messages, animation } = this.props;

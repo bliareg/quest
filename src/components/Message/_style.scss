@@ -1,0 +1,43 @@
+.message {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 10px;
+  height: 65px;
+
+  .message-avatar {
+    display: inline-block;
+    width: 45px;
+    height: 45px;
+    background-color: var(--message-bg-avatar);
+    border-radius: 50%;
+    color: var(--message-avatar-text);
+    font-weight: 600;
+    line-height: 46px;
+    text-align: center;
+  }
+
+  .message-holder {
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .message-text-holder {
+    margin-left: 10px;
+  }
+
+  .message-sender {
+    margin-bottom: 3px;
+    font-size: 12px;
+    color: var(--message-sender);
+  }
+
+  .message-text {
+    align-self: flex-end;
+    padding: 15px 10px;
+    background-color: var(--message-bg-text);
+    border-radius: 0 8px 8px;
+    font-size: 16px;
+    color: var(--message-text);
+  }
+}

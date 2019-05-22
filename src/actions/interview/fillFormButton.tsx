@@ -33,11 +33,11 @@ class FillFormButton extends Action<boolean, InterviewState> {
     }
 
     interview.events.changeRegistrationModal(true)
-  }
+  };
 
   _fillFormButton = () => {
     return (
-      <button onClick={this._openForm}>
+      <button className="btn primary" onClick={this._openForm}>
         Заполнить анкету
       </button>
     )

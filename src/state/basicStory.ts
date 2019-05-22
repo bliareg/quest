@@ -9,7 +9,7 @@ const getDefaultState = (): BasicStoryState => {
   return {
     decisions: []
   }
-}
+};
 
 const {
   addDecision,
@@ -26,11 +26,11 @@ const addEvents = (domain: Domain, store: Store<BasicStoryState>) => {
   );
 
   return events;
-}
+};
 
 const basicStory = {
   addEvents,
   getDefaultState
-}
+};
 
 export { basicStory }

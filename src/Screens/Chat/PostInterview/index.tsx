@@ -30,7 +30,7 @@ class PostInterview extends React.Component<Props, PostInterviewState> {
 
   onNext = () => {
     this.story.forceNext();
-  }
+  };
 
   render() {
     const { messages, animation } = this.props;

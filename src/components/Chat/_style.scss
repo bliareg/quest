@@ -1,5 +1,5 @@
 .chat-container {
-  --chat-block-height: 250px;
+  --chat-block-height: 350px;
 
   position: relative;
   display: flex;
@@ -28,8 +28,9 @@
     bottom: 0;
     width: 100%;
     height: var(--chat-block-height);
-    padding: 5px 15px;
+    padding: 10px 15px;
     min-height: 100px;
     background-color: var(--chat-bg);
+    border-top: 1px solid var(--chat-border);
   }
 }

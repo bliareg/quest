@@ -16,11 +16,11 @@ const getChatPostInterviewStory = (
   story.setActions(actions);
 
   return story;
-}
+};
 
 const t = (key: number | string) => {
   return translate(`stories.postInterview.plain.${key}`)
-}
+};
 
 const buildActions = (story: Story<PostInterviewState>): Action<PostInterviewState>[] => {
   return [
@@ -35,6 +35,6 @@ const buildActions = (story: Story<PostInterviewState>): Action<PostInterviewSta
     new Message(t(8), 5000, story),
     new Navigate(ROUTES.login, 7000, story)
   ]
-}
+};
 
 export { getChatPostInterviewStory };

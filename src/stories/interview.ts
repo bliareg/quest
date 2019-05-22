@@ -16,14 +16,13 @@ const getChatInterviewStory = (
   story.setActions(actions);
 
   return story;
-}
+};
 
 const TPrefix = 'stories.interview';
 
 const t = (key: string) => {
   return translate(`${TPrefix}.${key}`)
 };
-
 
 const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] => {
   return [

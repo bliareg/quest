@@ -12,7 +12,7 @@ const getDefaultState = (): InterviewState => {
     ...chat.getDefaultState(),
     isRegistrationOpen: false,
   }
-}
+};
 
 const {
   changeRegistrationModal,
@@ -20,7 +20,7 @@ const {
 
 const interviewDomain = createDomain(INTERVIEW);
 
-const store = interviewDomain.store(getDefaultState())
+const store = interviewDomain.store(getDefaultState());
 
 const events = {
   changeRegistrationModal: interviewDomain.event<boolean>(changeRegistrationModal),
@@ -39,6 +39,6 @@ store.reset(events.reset);
 const interview = {
   store,
   events
-}
+};
 
 export { interview }

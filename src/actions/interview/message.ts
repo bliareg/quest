@@ -7,7 +7,7 @@ class Message extends Action<string | React.ReactNode, InterviewState> {
   id: string;
 
   constructor(...props: ActionArgs<InterviewState>) {
-    super(...props)
+    super(...props);
     this.id = shortid();
   }
 
@@ -32,7 +32,7 @@ class Message extends Action<string | React.ReactNode, InterviewState> {
 
   buildMessage() {
     const { value, id } = this;
-    return { value, id }
+    return { value, id };
   }
 
   getId() {
