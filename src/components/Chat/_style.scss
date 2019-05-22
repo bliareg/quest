@@ -1,9 +1,14 @@
 .chat-container {
+  --chat-block-height: 250px;
+
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   padding: 10px;
+  padding-bottom: var(--chat-block-height);
+  min-height: calc(100vh - var(--chat-block-height)) !important;
 
   .animation-container {
     display: flex;
@@ -12,14 +17,18 @@
 
 
     .animation {
-      flex: 1 1 50%;
+      flex: 0 0 50%;
       width: 50%;
     }
   }
 
   .chat {
-    padding: 5px 15px;
+    position: absolute;
+    left: 0;
+    bottom: 0;
     width: 100%;
+    height: var(--chat-block-height);
+    padding: 5px 15px;
     min-height: 100px;
     background-color: var(--chat-bg);
   }

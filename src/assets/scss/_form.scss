@@ -25,6 +25,7 @@
   }
 
   .form-control-legend {
+    display: inline-block;
     margin-bottom: 10px;
     font-size: 16px;
   }
@@ -32,5 +33,10 @@
   .form-control-label {
     display: inline-block;
     margin-right: 10px;
+  }
+
+  .form-control-input {
+    display: inline-block;
+    margin: 5px;
   }
 }

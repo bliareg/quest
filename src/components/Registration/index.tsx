@@ -81,6 +81,7 @@ class Registration extends React.Component<Props, State> {
           open={isOpen}
           onClose={this.onClose}
           position={'top center'}
+          closeOnDocumentClick={false}
       >
         <div className="registration-main">
           <form onSubmit={this.onSubmit} className="form registration">
@@ -99,6 +100,7 @@ class Registration extends React.Component<Props, State> {
                 <label className="form-control-label" htmlFor="gender-male">{t('gender.male')}</label>
 
                 <input
+                    className="form-control-input"
                     id="gender-female"
                     type="radio"
                     name="gender"
@@ -119,7 +121,7 @@ class Registration extends React.Component<Props, State> {
                     checked={skill === INTERVIEW_DECISIONS.canWork}
                     onChange={this.onChange}
                 />
-                <label className="form-control-legend" htmlFor="skill-0">{t('skill.canWork')}</label>
+                <label className="form-control-label" htmlFor="skill-0">{t('skill.canWork')}</label>
 
                 <input
                     id="skill-1"
@@ -129,7 +131,7 @@ class Registration extends React.Component<Props, State> {
                     checked={skill === INTERVIEW_DECISIONS.cannotWork}
                     onChange={this.onChange}
                 />
-                <label className="form-control-legend" htmlFor="skill-1">{t('skill.cannotWork')}</label>
+                <label className="form-control-label" htmlFor="skill-1">{t('skill.cannotWork')}</label>
                 <div className="form-error">{errors.skill}</div>
               </div>
             </div>
