@@ -45,7 +45,6 @@ class SkypeCall extends React.Component<Props> {
   render() {
     return (
       <SkypeCallComponent
-        name={t('Screens.Skype.SkypeCall.name')}
         redirectTo={ROUTES.skypeFinalScreen}
       />
     );

@@ -22,11 +22,12 @@ class Skype extends React.Component<Props>  {
     render() {
     const { name, links, outcomingCall } = this.props;
     const { call, skip } = links;
-    const label =  outcomingCall ? 'components.Skype.callOutlabel' : 'components.Skype.callInlabel'
+    const label =  outcomingCall ? 'components.Skype.callOutlabel' : 'components.Skype.callInlabel';
 
     return (
       <div className="enter-layout">
           <AudioPlayer/>
+          {!outcomingCall &&
           <div className="skype-call">
               <div className="skype-avatar">
                   <svg className="avatar" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 513.323 513.323">
@@ -59,6 +60,12 @@ class Skype extends React.Component<Props>  {
                   </Link>
               </div>
           </div>
+          }
+          {outcomingCall &&
+              <div className="outcoming-call">
+                <div className="call-avatar">LI</div>
+              </div>
+          }
       </div>
     );
   }

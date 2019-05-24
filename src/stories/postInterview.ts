@@ -18,21 +18,27 @@ const getChatPostInterviewStory = (
   return story;
 };
 
+const NPrefix = 'Screens.Skype';
+
 const t = (key: number | string) => {
   return translate(`stories.postInterview.plain.${key}`)
+};
+
+const name = (key: string) => {
+  return translate(`${NPrefix}.${key}`)
 };
 
 const buildActions = (story: Story<PostInterviewState>): Action<PostInterviewState>[] => {
   return [
     new ChangeAnimation({ left: Animation.types.secretary }, 0, story),
-    new Message(t(1), 800, story),
-    new Message(t(2), 1500, story),
-    new Message(t(3), 1500, story),
-    new Message(t(4), 1500, story),
-    new Message(t(5), 1500, story),
-    new Message(t(6), 1500, story),
-    new Message(t(7), 5000, story),
-    new Message(t(8), 5000, story),
+    new Message({message: t(1), name: name('SkypeSecretary')}, 800, story),
+    new Message({message: t(2), name: name('SkypeSecretary')}, 1500, story),
+    new Message({message: t(3), name: name('SkypeSecretary')}, 1500, story),
+    new Message({message: t(4), name: name('SkypeSecretary')}, 1500, story),
+    new Message({message: t(5), name: name('SkypeSecretary')}, 1500, story),
+    new Message({message: t(6), name: name('SkypeSecretary')}, 1500, story),
+    new Message({message: t(7), name: name('SkypeSecretary')}, 5000, story),
+    new Message({message: t(8), name: name('SkypeSecretary')}, 5000, story),
     new Navigate(ROUTES.login, 7000, story)
   ]
 };

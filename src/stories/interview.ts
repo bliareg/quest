@@ -33,9 +33,9 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
   return [
     new ChangeAnimation({ left: Animation.types.boss }, 0, story),
     new Message({message: t('plain.1'), name: name('SkypeDirector') }, 800, story),
-    new Message({message: t('plain.2'), name: name('SkypeDirector')}, 1500, story),
-    new Message({message: t('plain.3'), name: name('SkypeDirector')}, 1500, story),
-    new Message({message: t('plain.4'), name: name('SkypeDirector')}, 1500, story),
+    new Message({message: t('plain.2'), name: name('SkypeDirector')}, 2000, story),
+    new Message({message: t('plain.3'), name: name('SkypeDirector')}, 3000, story),
+    new Message({message: t('plain.4'), name: name('SkypeDirector')}, 3000, story),
     new FillFormButton(null, 1500, story),
     new RemoveLastMessage(null, 0, story),
 
@@ -64,15 +64,15 @@ const buildActions = (story: Story<InterviewState>): Action<InterviewState>[] =>
     new Branching((state: InterviewState) => {
       if (story.isDecision(INTERVIEW_DECISIONS.cannotWork)) {
         return [
-          new Message({message: t('fail.1'), name: name('SkypeDirector')}, 800, story),
-          new Message({message: t('fail.2'), name: name('SkypeDirector')}, 1500, story),
-          new Message({message: t('fail.3'), name: name('SkypeDirector')}, 1500, story),
-          new ChangeAnimation({ right: Animation.types.secretary }, 1500, story),
-          new Message({message: t('fail.4'), name: name('SkypeSecretary')}, 50, story),
-          new Message({message: t('fail.5'), name: name('SkypeDirector')}, 1500, story),
-          new Message({message: t('fail.6'), name: name('SkypeSecretary')}, 50, story),
+          new Message({message: t('fail.1'), name: name('SkypeDirector')}, 1000, story),
+          new Message({message: t('fail.2'), name: name('SkypeDirector')}, 2000, story),
+          new Message({message: t('fail.3'), name: name('SkypeDirector')}, 2000, story),
+          new ChangeAnimation({ right: Animation.types.secretary }, 2000, story),
+          new Message({message: t('fail.4'), name: name('SkypeSecretary')}, 1000, story),
+          new Message({message: t('fail.5'), name: name('SkypeDirector')}, 2500, story),
+          new Message({message: t('fail.6'), name: name('SkypeSecretary')}, 2500, story),
           new ChangeAnimation({ right: '' }, 1500, story),
-          new Message({message: t('fail.7'), name: name('SkypeDirector')}, 1500, story),
+          new Message({message: t('fail.7'), name: name('SkypeDirector')}, 3000, story),
           new Message({message: t('fail.8'), name: name('SkypeDirector')}, 1500, story),
 
           new Navigate(ROUTES.skypeCallScreen, 5000, story)

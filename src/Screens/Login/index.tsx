@@ -12,13 +12,13 @@ type State = {
   accessCode: string,
   error: string,
   [key: string]: any
-}
+};
 
 const AUTH_CREDENTIAL: { [key: string]: string } = {
-  firstName: 'name',
-  lastName: 'lastname',
+  firstName: 'Карл',
+  lastName: 'Маркович',
   accessCode: 'code'
-}
+};
 
 const FIELDS = [
   'firstName',
@@ -32,11 +32,11 @@ class Login extends React.Component<Props, State> {
     lastName: '',
     accessCode: '',
     error: ''
-  }
+  };
 
   onChange = ({ name, value }: { name: any, value: string }) => {
     this.setState({ [name]: value }, () => this.error('hide'));
-  }
+  };
 
   onSubmit = () => {
     if (!this.isValid()) {
@@ -44,7 +44,7 @@ class Login extends React.Component<Props, State> {
     } else {
       history.push(ROUTES.finalSuccess1)
     }
-  }
+  };
 
   isValid = (): boolean => {
     const state: { [key: string]: string } = this.state;
@@ -52,7 +52,7 @@ class Login extends React.Component<Props, State> {
     return FIELDS.every(field => (
       this._compare(AUTH_CREDENTIAL[field], (state[field])
     )));
-  }
+  };
 
   error(action: 'show' | 'hide') {
     if (action === 'show') {
@@ -62,14 +62,14 @@ class Login extends React.Component<Props, State> {
     if (action === 'hide') {
       this.setState({ error: '' });
     }
-  }
+  };
 
   _compare = (val1: string, val2: string): boolean => {
     const val1ToCompare = `${val1}`.toLowerCase().replace(/\s/g, '');
     const val2ToCompare = `${val2}`.toLowerCase().replace(/\s/g, '');
     console.log(val1ToCompare, val2ToCompare);
     return val1ToCompare === val2ToCompare;
-  }
+  };
 
   render() {
     return (

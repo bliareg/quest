@@ -90,6 +90,7 @@ class Registration extends React.Component<Props, State> {
               <legend className="form-control-legend">{t('gender.legend')}</legend>
               <div className="form-control">
                 <input
+                    className="form-control-input"
                     id="gender-male"
                     type="radio"
                     name="gender"
@@ -114,6 +115,7 @@ class Registration extends React.Component<Props, State> {
               <p className="form-control-legend">{t('skill.legend')}</p>
               <div className="form-control">
                 <input
+                    className="form-control-input"
                     id="skill-0"
                     type="radio"
                     name="skill"
