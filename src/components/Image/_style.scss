@@ -1,6 +1,9 @@
 .full-screen-img {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
   img {
-    width: 500px;
-    transform: rotate(-90deg);
+    width: 90%
   }
 }
