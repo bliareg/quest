@@ -53,7 +53,7 @@
     "@types/lodash": "^4.14.123",
     "@types/mousetrap": "^1.6.2",
     "@types/shortid": "^0.0.29",
-    "electron": "^4.1.4",
+    "electron": "^18.3.7",
     "electron-builder": "^20.39.0",
     "node-sass": "^4.12.0"
   },
